@@ -35,7 +35,7 @@ class LangSwitcher extends Model
 
     public static function switchLocale($back = false)
     {
-        $switch_to = request()->input(config('lang-switch.request.input'));
+        $switch_to = request()->input(config('lang-switch.field'));
         self::setLocale($switch_to);
         if ($back) {
             return back();
