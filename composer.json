@@ -1,0 +1,29 @@
+{
+    "name": "topview-digital/laravel-lang-switcher",
+    "description": "Laravel Language Switcher",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robin Hoo",
+            "email": "robinhoo1973@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.0",
+        "laravel/framework": "^5.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TopviewDigital\\LangSwitcher\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TopviewDigital\\LangSwitcher\\LangSwitcherServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
