@@ -87,6 +87,29 @@ In the bootstrap or your service provider
 //Auth::user() is the guard method to get login user model, which could access the user field for setting locale
 \TopviewDigital\LangSwitcher\Model\LangSwitcher::registerGuard(['class'=>'Auth','method'=>'user','middleware'=>'web']);
 ```
+or you may reference the below sample language switcher controller to register your guard
+
+```
+<?php
+
+namespace App\Backend\Controllers\API;
+
+use App\User;
+use Encore\Admin\Facades\Admin;
+use App\Http\Controllers\Controller;
+use TopviewDigital\LangSwitcher\Model\LangSwitcher;
+
+class LanguageSelector extends Controller
+{
+
+    public function index()
+    {
+        LangSwitcher::registerGuard(['class' => 'Admin', 'method' => 'user', 'middleware' => 'admin']);
+        LangSwitcher::switchLocale();
+        return back();
+    }
+}
+```
 
 Hope you enjoy it! Thanks!
 

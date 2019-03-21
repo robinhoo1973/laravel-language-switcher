@@ -21,8 +21,10 @@ class LangSwitcher extends Model
     {
         $keys = ['class', 'method', 'middleware', 'enable'];
         $settings = array_intersect_key($settings, array_flip($keys));
-        if (!empty(array_intersect(array_keys($settings), $keys))) {
+        if (!empty(array_intersect(array_keys($settings), $keys)) && array_key_exists('class', $settings)) {
             $enable = $settings['enable'] ?? true;
+            $settings['middleware'] = $settings['middleware'] ?? strtolower($settings['class']);
+            $settings['method'] = $settings['method'] ?? 'user';
             unset($settings['enable']);
             $settings = self::firstOrCreate($settings);
             $settings->refresh();
