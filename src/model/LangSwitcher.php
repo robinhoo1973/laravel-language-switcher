@@ -33,13 +33,10 @@ class LangSwitcher extends Model
         }
     }
 
-    public static function switchLocale($back = false)
+    public static function switchLocale($field = null)
     {
-        $switch_to = request()->input(config('lang-switch.field'));
+        $switch_to = request()->input($field ?: config('lang-switch.field'));
         self::setLocale($switch_to);
-        if ($back) {
-            return back();
-        }
     }
 
     public static function setLocale($switch_to = null)
